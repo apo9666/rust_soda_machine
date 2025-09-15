@@ -18,6 +18,20 @@ pub enum CustomerError {
     Validation(String),
 }
 
+impl std::fmt::Display for CustomerError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            CustomerError::MachineError(e) => write!(f, "Machine error: {}", e),
+            CustomerError::SodaMachineNotFound(id) => write!(f, "Soda machine not found: {:?}", id),
+            CustomerError::RepositoryUnavailable(msg) => write!(f, "Repository unavailable: {}", msg),
+            CustomerError::RepositoryFailure(msg) => write!(f, "Repository failure: {}", msg),
+            CustomerError::Validation(msg) => write!(f, "Validation error: {}", msg),
+        }
+    }
+}
+
+impl std::error::Error for CustomerError {}
+
 #[async_trait]
 pub trait CustomerPort {
     async fn list_available_sodas(&self, machine_id: u32) -> Result<Vec<AvailableSodaDTO>, CustomerError>;

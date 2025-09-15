@@ -1,0 +1,9 @@
+[package]
+name = "soda_console"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+memory_repository = { path = "../memory_repository" }
+soda_core = { path = "../soda_core" }
