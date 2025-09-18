@@ -1,4 +1,4 @@
 [workspace]
 resolver = "3"
 
-members = [ "memory_repository", "soda_console","soda_core"]
+members = [ "memory_repository", "soda_console","soda_core", "soda_test"]
